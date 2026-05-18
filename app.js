@@ -10,7 +10,7 @@ const portfolioData = {
   metrics: [
     ["Current role", "Software Developer", "Nayax OTI PetroSmart"],
     ["Core stack", "C++ to Flutter", "Legacy systems to mobile delivery"],
-    ["Focus", "Diagnostics", "Logging, debugging, rollout stability"]
+    ["Focus", "Software Development", "Production systems, modernization, and delivery"]
   ],
   skills: [
     ["Languages", "C++, C#, Python, Bash, JavaScript, SQL"],
@@ -43,29 +43,25 @@ const portfolioData = {
   ],
   projects: [
     {
-      key: "pump",
-      kicker: "Current Project Snapshot",
       title: "Pump Pal",
       meta: "Live nearby diesel station discovery for South Africa",
       copy:
-        "Pump Pal helps drivers find nearby diesel stations, compare estimated pricing, and navigate fuel availability using live location and live nearby-station lookup.",
+        "Pump Pal is a Flutter app built to help drivers find nearby diesel stations, compare pricing, and make faster decisions while traveling.",
       bullets: [
-        "Built as a feature-first Flutter app with centralized shared components and theme tokens.",
-        "Uses clean architecture boundaries across presentation, domain, and data layers.",
-        "Includes live map/location flows, nearby station retrieval, and explicit loading, empty, and error handling."
+        "Built in Flutter around a feature-first structure with shared app-level components.",
+        "Uses presentation, domain, and data layers to keep the codebase modular and maintainable.",
+        "Shows experience with maps, live location, nearby data lookup, and real user-state handling."
       ]
     },
     {
-      key: "progression",
-      kicker: "Current Project Snapshot",
       title: "Progression",
       meta: "Offline-first Flutter fitness tracker and training history app",
       copy:
-        "Progression is an offline-first fitness tracker for logging activities, managing routines, and reviewing training history across sessions.",
+        "Progression is an offline-first fitness app for tracking activities, managing routines, and reviewing training history over time.",
       bullets: [
-        "Built in Flutter with reusable shared services, dialogs, and bottom-sheet helpers.",
-        "Organizes application behavior around screens, services, settings, and persistent local storage.",
-        "Supports activity logging, progress tracking, and routine/history management in a local-first workflow."
+        "Built in Flutter with reusable services and shared interaction patterns across the app.",
+        "Structured around screens, services, settings, and persistent local storage.",
+        "Shows experience with local-first product design, state handling, and long-term data workflows."
       ]
     }
   ],
@@ -151,13 +147,9 @@ class TimelineCard extends BaseComponent {
 class ProjectCard extends BaseComponent {
   constructor(project) {
     super("article", "project-card");
-    const theme = document.createElement("div");
-    theme.className = `project-theme ${project.key}`;
     const list = document.createElement("ul");
     list.className = "project-list";
     project.bullets.forEach((item) => list.append(this.item(item)));
-    this.append(theme);
-    this.append(this.text("p", "project-kicker", project.kicker));
     this.append(this.text("h3", "project-title", project.title));
     this.append(this.text("p", "project-meta", project.meta));
     this.append(this.text("p", "project-copy", project.copy));
@@ -222,9 +214,9 @@ function buildContactPill(icon, text, href) {
 function renderHighlights() {
   const root = document.querySelector("#highlights");
   const card = new SectionCard(
-    "Production-minded software delivery",
+    "Software Developer",
     "Capabilities",
-    "Hands-on work across diagnostics, protocol integration, legacy modernization, deployment, and modern app delivery."
+    "Louis Jefthas builds software across desktop and Flutter environments, with hands-on experience in production systems, API integration, modernization, and delivery."
   );
   const metrics = document.createElement("div");
   const skills = document.createElement("div");
@@ -252,8 +244,8 @@ function renderProjects() {
   const root = document.querySelector("#projects");
   const card = new SectionCard(
     "Projects",
-    "Current Work",
-    "Two active Flutter products shape the strongest visual and technical direction in this portfolio: Pump Pal and Progression.",
+    "Selected Work",
+    "A selection of applications that show product thinking, architecture decisions, and practical software delivery.",
     true
   );
   const grid = document.createElement("div");

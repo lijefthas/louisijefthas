@@ -284,31 +284,6 @@ body::before {
   transform-style: preserve-3d;
 }
 
-.project-theme {
-  min-height: 132px;
-  border-radius: var(--radius-md);
-}
-
-.project-theme.pump {
-  background:
-    radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 35%),
-    linear-gradient(135deg, rgba(14, 77, 146, 0.95), rgba(22, 27, 34, 0.98));
-}
-
-.project-theme.progression {
-  background:
-    radial-gradient(circle at top right, rgba(242, 210, 184, 0.4), transparent 36%),
-    linear-gradient(135deg, rgba(245, 241, 232, 0.96), rgba(187, 77, 0, 0.78));
-}
-
-.project-theme.progression + .project-kicker,
-.project-theme.progression ~ .project-title,
-.project-theme.progression ~ .project-copy,
-.project-theme.progression ~ .project-meta,
-.project-theme.progression ~ .project-list .project-item {
-  color: inherit;
-}
-
 .project-title {
   font-size: 1.7rem;
   line-height: 1.04;
