@@ -200,6 +200,9 @@ function renderHero() {
 function buildContactPill(icon, text, href) {
   const pill = href ? document.createElement("a") : document.createElement("div");
   pill.className = "pill hover-card";
+  if (icon === "mail" || icon === "linkedin") {
+    pill.classList.add("jiggle-link");
+  }
   if (href) {
     pill.href = href;
     pill.target = "_blank";

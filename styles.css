@@ -326,6 +326,18 @@ body::before {
   box-shadow: 0 24px 52px rgba(8, 20, 32, 0.28);
 }
 
+.jiggle-link:hover {
+  animation: jiggle 420ms ease-in-out;
+}
+
+@keyframes jiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  75% { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .spotlight {
   background:
     linear-gradient(135deg, rgba(255, 250, 241, 0.92), rgba(255, 250, 241, 0.78)),
