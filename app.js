@@ -68,12 +68,20 @@ const portfolioData = {
         "Reusable dialog and bottom-sheet patterns with blurred backdrops.",
         "Palette-driven theming with warm accents and polished settings flows."
       ]
+    },
+    {
+      key: "pump",
+      kicker: "Selected Commercial Work",
+      title: "Production Software Delivery",
+      meta: "Work highlighted directly from the CV",
+      copy:
+        "The commercial work behind this portfolio is grounded in upgrades, diagnostics, deployments, protocol integration, and support for software that is already live in the field.",
+      bullets: [
+        "Desktop Application Modernisation",
+        "Logging Framework Upgrade",
+        "AVI / FCC Integration"
+      ]
     }
-  ],
-  cvProjects: [
-    "Desktop Application Modernisation",
-    "Logging Framework Upgrade",
-    "AVI / FCC Integration"
   ],
   education: [
     "Damelin College - Diploma in Information Technology (Feb 2020 - May 2023)",
@@ -163,7 +171,7 @@ class ProjectCard extends BaseComponent {
   }
 }
 
-class CvDetailCard extends BaseComponent {
+class DetailCard extends BaseComponent {
   constructor(title, items) {
     super("article", "cv-card");
     const list = document.createElement("div");
@@ -183,7 +191,7 @@ function renderHero() {
   layout.className = "hero-layout";
   copy.className = "hero-copy";
   meta.className = "meta-grid";
-  card.append(card.text("span", "hero-band", "Portfolio + CV Web View"));
+  card.append(card.text("span", "hero-band", "Portfolio Website"));
   copy.append(card.text("h1", "", portfolioData.person.name));
   copy.append(card.text("p", "", portfolioData.person.summary));
   [
@@ -235,9 +243,9 @@ function renderExperience() {
 function renderProjects() {
   const root = document.querySelector("#projects");
   const card = new SectionCard(
-    "Current App Work",
-    "One Directory Up",
-    "This portfolio design deliberately merges cues from the two active Flutter projects nearby: Pump Pal contributes the darker fuel-tech edge, while Progression contributes the warmer editorial glass surfaces.",
+    "Projects",
+    "Current + Selected",
+    "This section combines the two active Flutter projects nearby with selected commercial work pulled from the CV, so the page stays portfolio-first without a separate CV block.",
     true
   );
   const grid = document.createElement("div");
@@ -246,19 +254,16 @@ function renderProjects() {
   root.append(card.append(grid));
 }
 
-function renderCvView() {
-  const root = document.querySelector("#cv-view");
+function renderEducation() {
+  const root = document.querySelector("#education");
   const card = new SectionCard(
-    "CV View",
-    "HTML Only",
-    "This section is rendered from the CV content directly. No source PDF is required for the live site."
+    "Education",
+    "Foundation",
+    "The education background stays in the portfolio, but it no longer appears as a standalone CV view."
   );
   const grid = document.createElement("div");
   grid.className = "project-grid";
-  grid.append(
-    new CvDetailCard("Highlighted Project Work", portfolioData.cvProjects).element
-  );
-  grid.append(new CvDetailCard("Education", portfolioData.education).element);
+  grid.append(new DetailCard("Education", portfolioData.education).element);
   root.append(card.append(grid));
 }
 
@@ -266,8 +271,8 @@ function init() {
   renderHero();
   renderHighlights();
   renderExperience();
+  renderEducation();
   renderProjects();
-  renderCvView();
 }
 
 init();
