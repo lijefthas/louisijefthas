@@ -191,7 +191,6 @@ function renderHero() {
   layout.className = "hero-layout";
   copy.className = "hero-copy";
   meta.className = "meta-grid";
-  card.append(card.text("span", "hero-band", "Portfolio Website"));
   copy.append(card.text("h1", "", portfolioData.person.name));
   copy.append(card.text("p", "", portfolioData.person.summary));
   contactItems.forEach((item) => meta.append(buildContactPill(...item)));
@@ -215,7 +214,7 @@ function renderHighlights() {
   const root = document.querySelector("#highlights");
   const card = new SectionCard(
     "Software Developer",
-    "Capabilities",
+    "",
     "Louis Jefthas builds software across desktop and Flutter environments, with hands-on experience in production systems, API integration, modernization, and delivery."
   );
   const metrics = document.createElement("div");
@@ -231,7 +230,7 @@ function renderExperience() {
   const root = document.querySelector("#experience");
   const card = new SectionCard(
     "Experience",
-    "Career Path",
+    "",
     "Recent experience spans development, field support, API integration, deployment, and modernization of commercial systems."
   );
   const grid = document.createElement("div");
@@ -244,7 +243,7 @@ function renderProjects() {
   const root = document.querySelector("#projects");
   const card = new SectionCard(
     "Projects",
-    "Selected Work",
+    "",
     "A selection of applications that show product thinking, architecture decisions, and practical software delivery.",
     true
   );
@@ -260,7 +259,7 @@ function renderEducation() {
   const root = document.querySelector("#education");
   const card = new SectionCard(
     "Education",
-    "Foundation",
+    "",
     "Formal training that supports the hands-on engineering work shown across the rest of the portfolio."
   );
   const grid = document.createElement("div");

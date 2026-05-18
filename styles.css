@@ -235,6 +235,7 @@ body::before {
 .metric-value {
   font-size: 2rem;
   line-height: 1;
+  margin-bottom: 10px;
 }
 
 .metric-label,
@@ -245,6 +246,14 @@ body::before {
 .skill-title {
   font-weight: 800;
   font-family: "IBM Plex Mono", "Consolas", monospace;
+}
+
+.metric-label {
+  margin: 0 0 10px;
+  color: #9ddcff;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .metric-copy,
