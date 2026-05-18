@@ -2,9 +2,8 @@ const portfolioData = {
   person: {
     name: "Louis Jefthas",
     summary:
-      "Software developer with production experience across desktop, API integration, protocol work, and modern Flutter delivery. This portfolio blends the grounded utility of Pump Pal with the softer glass-like tactility used in Progression.",
+      "This portfolio blends the grounded utility of Pump Pal with the softer glass-like tactility used in Progression.",
     location: "Cape Town, South Africa",
-    phone: "062 876 1124",
     email: "louisjefthas90@gmail.com",
     linkedin: "linkedin.com/in/louis-ivanne-jefthas"
   },
@@ -68,19 +67,6 @@ const portfolioData = {
         "Reusable dialog and bottom-sheet patterns with blurred backdrops.",
         "Palette-driven theming with warm accents and polished settings flows."
       ]
-    },
-    {
-      key: "pump",
-      kicker: "Selected Commercial Work",
-      title: "Production Software Delivery",
-      meta: "Work highlighted directly from the CV",
-      copy:
-        "The commercial work behind this portfolio is grounded in upgrades, diagnostics, deployments, protocol integration, and support for software that is already live in the field.",
-      bullets: [
-        "Desktop Application Modernisation",
-        "Logging Framework Upgrade",
-        "AVI / FCC Integration"
-      ]
     }
   ],
   education: [
@@ -88,6 +74,21 @@ const portfolioData = {
     "CTU Training Solutions - FET Certified IT Technical Support (Feb 2019 - Dec 2019)",
     "New Orleans Secondary School - Bachelor's Pass (2018)"
   ]
+};
+
+const contactItems = [
+  ["home", portfolioData.person.location, null],
+  ["mail", portfolioData.person.email, `mailto:${portfolioData.person.email}`],
+  ["linkedin", "LinkedIn", `https://${portfolioData.person.linkedin}`]
+];
+
+const icons = {
+  home:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg>',
+  mail:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 2 8 5 8-5"/></svg>',
+  linkedin:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5A1.5 1.5 0 1 1 6.5 5a1.5 1.5 0 0 1 0 3.5zM5 10h3v9H5zm5 0h2.9v1.3h.1c.4-.8 1.4-1.6 3-1.6 3.2 0 3.8 2 3.8 4.7V19h-3v-4c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-3z"/></svg>'
 };
 
 class BaseComponent {
@@ -182,6 +183,13 @@ class DetailCard extends BaseComponent {
   }
 }
 
+class ProjectOverviewCard extends ProjectCard {
+  constructor(project) {
+    super(project);
+    this.element.classList.add("hover-card");
+  }
+}
+
 function renderHero() {
   const root = document.querySelector("#hero");
   const card = new BaseComponent("section", "panel hero-card");
@@ -194,20 +202,20 @@ function renderHero() {
   card.append(card.text("span", "hero-band", "Portfolio Website"));
   copy.append(card.text("h1", "", portfolioData.person.name));
   copy.append(card.text("p", "", portfolioData.person.summary));
-  [
-    portfolioData.person.location,
-    portfolioData.person.phone,
-    portfolioData.person.email,
-    portfolioData.person.linkedin
-  ].forEach((line) => meta.append(buildPill(line)));
+  contactItems.forEach((item) => meta.append(buildContactPill(...item)));
   layout.append(copy, meta);
   root.append(card.append(layout));
 }
 
-function buildPill(text) {
-  const pill = document.createElement("div");
-  pill.className = "pill";
-  pill.textContent = text;
+function buildContactPill(icon, text, href) {
+  const pill = href ? document.createElement("a") : document.createElement("div");
+  pill.className = "pill hover-card";
+  if (href) {
+    pill.href = href;
+    pill.target = "_blank";
+    pill.rel = "noreferrer";
+  }
+  pill.innerHTML = `<span class="pill-icon">${icons[icon]}</span><span>${text}</span>`;
   return pill;
 }
 
@@ -215,8 +223,8 @@ function renderHighlights() {
   const root = document.querySelector("#highlights");
   const card = new SectionCard(
     "Production-minded software delivery",
-    "From The CV",
-    "The CV centers on real production software work: legacy modernization, protocol integration, diagnostics, updates, and support under operational pressure."
+    "Capabilities",
+    "Hands-on work across diagnostics, protocol integration, legacy modernization, deployment, and modern app delivery."
   );
   const metrics = document.createElement("div");
   const skills = document.createElement("div");
@@ -244,13 +252,15 @@ function renderProjects() {
   const root = document.querySelector("#projects");
   const card = new SectionCard(
     "Projects",
-    "Current + Selected",
-    "This section combines the two active Flutter projects nearby with selected commercial work pulled from the CV, so the page stays portfolio-first without a separate CV block.",
+    "Current Work",
+    "Two active Flutter products shape the strongest visual and technical direction in this portfolio: Pump Pal and Progression.",
     true
   );
   const grid = document.createElement("div");
   grid.className = "project-grid";
-  portfolioData.projects.forEach((item) => grid.append(new ProjectCard(item).element));
+  portfolioData.projects.forEach((item) =>
+    grid.append(new ProjectOverviewCard(item).element)
+  );
   root.append(card.append(grid));
 }
 
@@ -259,7 +269,7 @@ function renderEducation() {
   const card = new SectionCard(
     "Education",
     "Foundation",
-    "The education background stays in the portfolio, but it no longer appears as a standalone CV view."
+    "Formal training that supports the hands-on engineering work shown across the rest of the portfolio."
   );
   const grid = document.createElement("div");
   grid.className = "project-grid";
@@ -273,6 +283,27 @@ function init() {
   renderExperience();
   renderEducation();
   renderProjects();
+  attachHoverEffects();
+}
+
+function attachHoverEffects() {
+  document.querySelectorAll(".hover-card").forEach((card) => bindHoverCard(card));
+}
+
+function bindHoverCard(card) {
+  card.addEventListener("mousemove", (event) => updateHoverCard(card, event));
+  card.addEventListener("mouseleave", () => resetHoverCard(card));
+}
+
+function updateHoverCard(card, event) {
+  const box = card.getBoundingClientRect();
+  const rx = ((event.clientY - box.top) / box.height - 0.5) * -8;
+  const ry = ((event.clientX - box.left) / box.width - 0.5) * 8;
+  card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+}
+
+function resetHoverCard(card) {
+  card.style.transform = "";
 }
 
 init();
