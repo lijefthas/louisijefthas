@@ -2,7 +2,7 @@ const portfolioData = {
   person: {
     name: "Louis Jefthas",
     summary:
-      "This portfolio blends the grounded utility of Pump Pal with the softer glass-like tactility used in Progression.",
+      "Software Developer with hands-on experience maintaining, enhancing, and modernising commercial software systems in production environments.",
     location: "Cape Town, South Africa",
     email: "louisjefthas90@gmail.com",
     linkedin: "linkedin.com/in/louis-ivanne-jefthas"
