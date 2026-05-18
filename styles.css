@@ -146,10 +146,15 @@ body::before {
   gap: 16px;
 }
 
-.meta-grid,
 .metrics-grid,
 .skill-grid {
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.meta-grid {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
 }
 
 .pill {
