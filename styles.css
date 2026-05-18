@@ -28,7 +28,7 @@ html {
 body {
   margin: 0;
   color: var(--paper);
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
   background:
     radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 28%),
     radial-gradient(circle at top right, rgba(187, 77, 0, 0.22), transparent 34%),
@@ -100,6 +100,7 @@ body::before {
   color: #9ddcff;
   font-size: 0.78rem;
   font-weight: 800;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -114,7 +115,7 @@ body::before {
 .project-title,
 .metric-value {
   margin: 0;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
 }
 
 .hero-copy h1 {
@@ -169,6 +170,7 @@ body::before {
   color: var(--paper);
   font-size: 0.92rem;
   font-weight: 700;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
   text-decoration: none;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   transform-style: preserve-3d;
@@ -210,6 +212,7 @@ body::before {
   color: #9ddcff;
   font-size: 0.78rem;
   font-weight: 800;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -241,6 +244,7 @@ body::before {
 .project-meta,
 .skill-title {
   font-weight: 800;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
 }
 
 .metric-copy,
@@ -251,6 +255,7 @@ body::before {
 .skill-copy {
   color: rgba(243, 244, 246, 0.78);
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .list-row {
