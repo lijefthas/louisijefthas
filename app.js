@@ -165,11 +165,10 @@ class ProjectCard extends BaseComponent {
 }
 
 class DetailCard extends BaseComponent {
-  constructor(title, items) {
+  constructor(items) {
     super("article", "cv-card");
     const list = document.createElement("div");
     list.className = "cv-list";
-    this.append(this.text("h3", "project-title", title));
     items.forEach((item) => list.append(this.text("p", "project-item", item)));
     this.append(list);
   }
@@ -264,7 +263,7 @@ function renderEducation() {
   );
   const grid = document.createElement("div");
   grid.className = "project-grid";
-  grid.append(new DetailCard("Education", portfolioData.education).element);
+  grid.append(new DetailCard(portfolioData.education).element);
   root.append(card.append(grid));
 }
 
