@@ -243,8 +243,7 @@ function renderProjects() {
   const card = new SectionCard(
     "Projects",
     "",
-    "A selection of applications that show product thinking, architecture decisions, and practical software delivery.",
-    true
+    "A selection of applications that show product thinking, architecture decisions, and practical software delivery."
   );
   const grid = document.createElement("div");
   grid.className = "project-grid";
