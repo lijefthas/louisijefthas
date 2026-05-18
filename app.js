@@ -48,11 +48,11 @@ const portfolioData = {
       title: "Pump Pal",
       meta: "Live nearby diesel station discovery for South Africa",
       copy:
-        "Pump Pal combines a feature-first Flutter architecture with a centralized design system. The strongest cues are deep blue fuel-station accents, warm neutral surfaces, blurred sheets, and a product voice focused on clarity under real-world network and location constraints.",
+        "Pump Pal helps drivers find nearby diesel stations, compare estimated pricing, and navigate fuel availability using live location and live nearby-station lookup.",
       bullets: [
-        "Interactive map with live device location and nearby station lookup via Overpass/OpenStreetMap.",
-        "Persisted theme settings with palette switching and shared design tokens.",
-        "Explicit loading, empty, and error states instead of silent mock fallback."
+        "Built as a feature-first Flutter app with centralized shared components and theme tokens.",
+        "Uses clean architecture boundaries across presentation, domain, and data layers.",
+        "Includes live map/location flows, nearby station retrieval, and explicit loading, empty, and error handling."
       ]
     },
     {
@@ -61,11 +61,11 @@ const portfolioData = {
       title: "Progression",
       meta: "Offline-first Flutter fitness tracker and training history app",
       copy:
-        "Progression leans into a softer glass treatment: warm cream surfaces, rust-orange accents, translucent cards, and consistent blurred dialogs. The product direction is calmer and more editorial than Pump Pal while still staying structured and utility-first.",
+        "Progression is an offline-first fitness tracker for logging activities, managing routines, and reviewing training history across sessions.",
       bullets: [
-        "Offline-first training activity logging with multi-platform Flutter support.",
-        "Reusable dialog and bottom-sheet patterns with blurred backdrops.",
-        "Palette-driven theming with warm accents and polished settings flows."
+        "Built in Flutter with reusable shared services, dialogs, and bottom-sheet helpers.",
+        "Organizes application behavior around screens, services, settings, and persistent local storage.",
+        "Supports activity logging, progress tracking, and routine/history management in a local-first workflow."
       ]
     }
   ],
