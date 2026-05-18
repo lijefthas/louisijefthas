@@ -74,6 +74,11 @@ const portfolioData = {
     "Desktop Application Modernisation",
     "Logging Framework Upgrade",
     "AVI / FCC Integration"
+  ],
+  education: [
+    "Damelin College - Diploma in Information Technology (Feb 2020 - May 2023)",
+    "CTU Training Solutions - FET Certified IT Technical Support (Feb 2019 - Dec 2019)",
+    "New Orleans Secondary School - Bachelor's Pass (2018)"
   ]
 };
 
@@ -158,17 +163,14 @@ class ProjectCard extends BaseComponent {
   }
 }
 
-class CvFrameCard extends BaseComponent {
-  constructor() {
+class CvDetailCard extends BaseComponent {
+  constructor(title, items) {
     super("article", "cv-card");
-    const note =
-      "The embedded PDF below is the original file, with the portfolio sections above translating it into a cleaner web view.";
-    const frame = document.createElement("iframe");
-    frame.className = "cv-frame";
-    frame.src = "./Louis_Jefthas_CV.pdf";
-    frame.title = "Louis Jefthas CV PDF";
-    this.append(this.text("p", "cv-frame-note", note));
-    this.append(frame);
+    const list = document.createElement("div");
+    list.className = "cv-list";
+    this.append(this.text("h3", "project-title", title));
+    items.forEach((item) => list.append(this.text("p", "project-item", item)));
+    this.append(list);
   }
 }
 
@@ -248,10 +250,16 @@ function renderCvView() {
   const root = document.querySelector("#cv-view");
   const card = new SectionCard(
     "CV View",
-    "Original Document",
-    `Key project themes in the CV include ${portfolioData.cvProjects.join(", ")}.`
+    "HTML Only",
+    "This section is rendered from the CV content directly. No source PDF is required for the live site."
   );
-  root.append(card.append(new CvFrameCard().element));
+  const grid = document.createElement("div");
+  grid.className = "project-grid";
+  grid.append(
+    new CvDetailCard("Highlighted Project Work", portfolioData.cvProjects).element
+  );
+  grid.append(new CvDetailCard("Education", portfolioData.education).element);
+  root.append(card.append(grid));
 }
 
 function init() {
