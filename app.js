@@ -5,7 +5,8 @@ const portfolioData = {
       "Software Developer with hands-on experience maintaining, enhancing, and modernising commercial software systems in production environments.",
     location: "Cape Town, South Africa",
     email: "louisjefthas90@gmail.com",
-    linkedin: "linkedin.com/in/louis-ivanne-jefthas"
+    linkedin: "linkedin.com/in/louis-ivanne-jefthas",
+    projects: "github.com/lijefthas"
   },
   metrics: [
     ["Current role", "Software Developer", "Nayax OTI PetroSmart"],
@@ -43,25 +44,33 @@ const portfolioData = {
   ],
   projects: [
     {
-      title: "Pump Pal",
+      title: "Pump Pal (Flutter)",
       meta: "Live nearby diesel station discovery for South Africa",
       copy:
         "Pump Pal is a Flutter app built to help drivers find nearby diesel stations, compare pricing, and make faster decisions while traveling.",
       bullets: [
         "Built in Flutter around a feature-first structure with shared app-level components.",
         "Uses presentation, domain, and data layers to keep the codebase modular and maintainable.",
-        "Shows experience with maps, live location, nearby data lookup, and real user-state handling."
       ]
     },
     {
-      title: "Progression",
+      title: "Progression (Flutter)",
       meta: "Offline-first Flutter fitness tracker and training history app",
       copy:
         "Progression is an offline-first fitness app for tracking activities, managing routines, and reviewing training history over time.",
       bullets: [
         "Built in Flutter with reusable services and shared interaction patterns across the app.",
         "Structured around screens, services, settings, and persistent local storage.",
-        "Shows experience with local-first product design, state handling, and long-term data workflows."
+      ]
+    },
+    {
+      title: "Utility Console (PyQt6)",
+      meta: "Python terminal toolkit for everyday developer tasks",
+      copy:
+        "Utility Console is a Python CLI tool that bundles common developer utilities into a single interactive terminal interface, removing the need to context-switch between separate scripts.",
+      bullets: [
+        "Built in Python with a menu-driven interface for quick access to grouped utilities.",
+        "Covers tasks like file operations, text processing, and system information in one place.",
       ]
     }
   ],
@@ -75,7 +84,8 @@ const portfolioData = {
 const contactItems = [
   ["home", portfolioData.person.location, null],
   ["mail", portfolioData.person.email, `mailto:${portfolioData.person.email}`],
-  ["linkedin", "LinkedIn", `https://${portfolioData.person.linkedin}`]
+  ["linkedin", "LinkedIn", `https://${portfolioData.person.linkedin}`],
+  ["projects", "Projects", `https://${portfolioData.person.projects}`]
 ];
 
 const icons = {
@@ -84,7 +94,9 @@ const icons = {
   mail:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 2 8 5 8-5"/></svg>',
   linkedin:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5A1.5 1.5 0 1 1 6.5 5a1.5 1.5 0 0 1 0 3.5zM5 10h3v9H5zm5 0h2.9v1.3h.1c.4-.8 1.4-1.6 3-1.6 3.2 0 3.8 2 3.8 4.7V19h-3v-4c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-3z"/></svg>'
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5A1.5 1.5 0 1 1 6.5 5a1.5 1.5 0 0 1 0 3.5zM5 10h3v9H5zm5 0h2.9v1.3h.1c.4-.8 1.4-1.6 3-1.6 3.2 0 3.8 2 3.8 4.7V19h-3v-4c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-3z"/></svg>',
+  projects:
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>',
 };
 
 class BaseComponent {
@@ -200,7 +212,7 @@ function renderHero() {
 function buildContactPill(icon, text, href) {
   const pill = href ? document.createElement("a") : document.createElement("div");
   pill.className = "pill hover-card";
-  if (icon === "mail" || icon === "linkedin") {
+  if (icon === "mail" || icon === "linkedin" || icon === "projects") {
     pill.classList.add("jiggle-link");
   }
   if (href) {
