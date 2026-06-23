@@ -9,7 +9,7 @@ const portfolioData = {
     projects: "github.com/lijefthas"
   },
   metrics: [
-    ["Current role", "Software Developer", "Nayax OTI PetroSmart"],
+    ["Current role", "Software Developer", "Nayax (Fuel & Forecourt)"],
     ["Core stack", "C++ to Flutter", "Legacy systems to mobile delivery"],
     ["Focus", "Software Development", "Production systems, modernization, and delivery"]
   ],
@@ -22,7 +22,7 @@ const portfolioData = {
   experience: [
     {
       role: "Software Developer",
-      company: "Nayax OTI PetroSmart",
+      company: "Nayax",
       period: "Feb 2024 - Current",
       points: [
         "Integrated external webhooks and JSON APIs for payment and FCC authorization flows.",
@@ -33,7 +33,7 @@ const portfolioData = {
     },
     {
       role: "Technical Support Operator",
-      company: "Nayax OTI PetroSmart",
+      company: "Nayax",
       period: "Aug 2023 - Jan 2024",
       points: [
         "Resolved field issues remotely across hardware and software systems.",
@@ -227,9 +227,9 @@ function buildContactPill(icon, text, href) {
 function renderHighlights() {
   const root = document.querySelector("#highlights");
   const card = new SectionCard(
-    "Software Developer",
+    "Introduction",
     "",
-    "Louis Jefthas builds software across desktop and Flutter environments, with hands-on experience in production systems, API integration, modernization, and delivery."
+    "I build software across desktop, Flutter and Linux environments, with hands-on experience in production systems, API integration, modernization, and delivery."
   );
   const metrics = document.createElement("div");
   const skills = document.createElement("div");
